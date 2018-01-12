@@ -1,0 +1,73 @@
+如果tree命令不存在，可以使用yum install tree -y 安装
+
+[root@oldboy ~]# yum install tree -y    安装tree服务
+Loaded plugins: fastestmirror, security
+Setting up Install Process
+base                                                     | 3.7 kB     00:00     
+http://mirrors.njupt.edu.cn/centos/6.9/os/x86_64/repodata/5d14ebd60604f4433dcc8a3a17cd3bbc7b80ec5dff74cbcc50dab6e711959265-primary.sqlite.bz2: [Errno 12] Timeout on http://mirrors.njupt.edu.cn:80/centos/6.9/os/x86_64/repodata/5d14ebd60604f4433dcc8a3a17cd3bbc7b80ec5dff74cbcc50dab6e711959265-primary.sqlite.bz2: (28, 'Operation too slow. Less than 1 bytes/sec transfered the last 30 seconds')
+Trying other mirror.
+base/primary_db                                          | 4.7 MB     00:04     
+extras                                                   | 3.4 kB     00:00     
+extras/primary_db                                        |  29 kB     00:00     
+updates                                                  | 3.4 kB     00:00     
+updates/primary_db                                       | 5.3 MB     00:02     
+Resolving Dependencies
+--> Running transaction check
+---> Package tree.x86_64 0:1.5.3-3.el6 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package         Arch              Version                Repository       Size
+================================================================================
+Installing:
+ tree            x86_64            1.5.3-3.el6            base             36 k
+
+Transaction Summary
+================================================================================
+Install       1 Package(s)
+
+Total download size: 36 k
+Installed size: 65 k
+Downloading Packages:
+tree-1.5.3-3.el6.x86_64.rpm                              |  36 kB     00:00     
+warning: rpmts_HdrFromFdno: Header V3 RSA/SHA1 Signature, key ID c105b9de: NOKEY
+Retrieving key from file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+Importing GPG key 0xC105B9DE:
+ Userid : CentOS-6 Key (CentOS 6 Official Signing Key) <centos-6-key@centos.org>
+ Package: centos-release-6-6.el6.centos.12.2.x86_64 (@anaconda-CentOS-201410241409.x86_64/6.6)
+ From   : /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
+Running rpm_check_debug
+Running Transaction Test
+Transaction Test Succeeded
+Running Transaction
+  Installing : tree-1.5.3-3.el6.x86_64                                      1/1 
+  Verifying  : tree-1.5.3-3.el6.x86_64                                      1/1 
+
+Installed:
+  tree.x86_64 0:1.5.3-3.el6                                                     
+
+Complete!
+[root@oldboy ~]# tree /oldboy/      
+/oldboy/
+└── test
+    └── a
+        └── b
+            └── c
+                └── d
+
+5 directories, 0 files
+[root@oldboy ~]# LANG=EN     出现乱码，设置这个调整
+[root@oldboy ~]# tree /oldboy/
+/oldboy/
+`-- test
+    `-- a
+        `-- b
+            `-- c
+                `-- d
+
+5 directories, 0 files
+[root@oldboy ~]# 
+linux 严格区分大小写
+
