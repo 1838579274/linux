@@ -1,0 +1,34 @@
+MySQL 5.6.17 配置安装
+因考虑5.7处在开发版，线上服务器只求稳定不最新，所以安装MySQL 5.6最高版本的配置，MySQL从5.5开始要通过cmake安装，所以安装前先安装cmake     # yum install cmake
+软件存放路径/data1/programfiles		软件安装路径/data1/apps
+MySQL下载地址是wget http://cdn.mysql.com/Downloads/MySQL-5.6/mysql-5.6.17.tar.gz
+[root@MySQL ~]# groupadd mysql
+[root@MySQL ~]# useradd -g mysql mysql -s /bin/false
+[root@MySQL ~]# cd /data1/programfiles/
+[root@MySQL setupfiles]# tar -zxvf mysql-5.6.17
+[root@MySQL setupfiles]# cd mysql-5.6.17
+[root@MySQL mysql-5.6.17]# cmake . -DCMAKE_INSTALL_PREFIX=/data1/programfiles/mysql-5.6.17 -DMYSQL_DATADIR=/data1/apps/mysql -DEXTRA_CHARSETS=all
+[root@MySQL setupfiles]# make && make install
+参数说明：
+-DCMAKE_INSTALL_PREFIX=/usr/local/mysql        //安装目录
+-DINSTALL_DATADIR=/usr/local/mysql/data         //数据库存放目录
+-DDEFAULT_CHARSET=utf8                    　　　　//使用utf8字符
+-DDEFAULT_COLLATION=utf8_general_ci            //校验字符
+-DEXTRA_CHARSETS=all                        　　　　//安装所有扩展字符集
+-DENABLED_LOCAL_INFILE=1                    　　  //允许从本地导入数据
+
+[root@MySQL mysql-5.6.17]# make clean          #清理安装目录
+[root@MySQL mysql-5.6.17]# ln -s /data1/programfiles/mysql-5.6.17 /usr/local/mysql
+[root@MySQL programfiles]# cd /data1/programfiles/
+[root@MySQL programfiles]# chown -R mysql:mysql mysql-5.6.17
+[root@MySQL programfiles]# cd /data1/apps/
+[root@MySQL apps]# mkdir mysql && chown -R mysql:mysql mysql
+[root@MySQL apps]# cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf
+[root@MySQL apps]# cd /usr/local/mysql/scripts
+[root@MySQL scripts]# ./mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/data1/apps/mysql
+	如果环境变量和自启动没有自动生成，手动调一下。我安装后自动有了，可能是5.6.17版本的原因！
+    MySQL的安装到这里结束了，启动停用登录都试过能正常！
+
+
+
+http://www.sosge.com/a91.html
