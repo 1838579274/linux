@@ -1,0 +1,76 @@
+安装wget
+[root@localhost ~]# yum -y install wget
+ 
+安装make：
+[root@localhost ~]# yum -y install gcc automake libtool make
+ 
+
+安装g++：
+[root@localhost ~]# yum install gcc gcc-c++
+ 
+选定源码目录
+ 
+
+安装PCRE库：
+[root@localhost src]# wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.42.tar.gz
+ 
+解压安装包：
+[root@localhost src]# tar -zxvf pcre-8.42.tar.gz
+ 
+
+进入解压包目录：
+cd pcre-8。42
+ 
+./configure
+ 
+make
+ 
+make install
+ 
+显示版本：
+ 
+安装SSL（OpenSSL）
+参考链接：https://www.jb51.net/article/134400.htm
+cd /usr/local/src 进入目录
+wget https://www.openssl.org/source/openssl-1.0.1t.tar.gz 安在压缩包
+tar -zxvf openssl-1.0.1t.tar.gz  解压压缩包
+进入SSL目录：
+[root@localhost src]# cd openssl-1.0.1t 
+
+设定Openssl 安装，( --prefix )参数为欲安装之目录，也就是安装后的档案会出现在该目录下：
+执行命令： ./config --prefix=/usr/local/src/openssl
+ 
+
+执行命令./config -t
+ 
+
+执行make，编译Openssl
+
+ 
+
+安装 Openssl:
+make install
+
+ 
+ 
+
+
+安装Nginx：
+Wget http://nginx.org/download/nginx-1.9.15.tar.gz   
+解压文件
+Tar -zxvf nginx-1.10.2.tar.gz
+进入目录：cd nginx-1.10.2
+命令：./configure
+
+ 
+
+[root@localhost src]# yum install -y zlib-devel
+ 
+ 
+
+执行：make
+make install
+
+
+
+
