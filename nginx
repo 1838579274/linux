@@ -15,18 +15,32 @@
 [root@localhost src]# wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.42.tar.gz
  
 解压安装包：
-[root@localhost src]# tar -zxvf pcre-8.42.tar.gz
- 
+[root@localhost src]# tar -zxvf pcre-8.42.tar.gz 
 
 进入解压包目录：
 cd pcre-8。42
- 
 ./configure
- 
 make
- 
 make install
- 
+
+安装zlib：
+
+[root@localhost src]# wget http://zlib.net/zlib-1.2.11.tar.gz
+--2018-11-08 10:34:26--  http://zlib.net/zlib-1.2.11.tar.gz
+正在解析主机 zlib.net (zlib.net)... 68.66.224.164
+正在连接 zlib.net (zlib.net)|68.66.224.164|:80... 已连接。
+已发出 HTTP 请求，正在等待回应... 200 OK
+长度：607698 (593K) [application/x-gzip]
+正在保存至: “zlib-1.2.11.tar.gz”
+
+100%[=================================================================>] 607,698      304KB/s 用时 2.0s   
+
+2018-11-08 10:34:29 (304 KB/s) - 已保存 “zlib-1.2.11.tar.gz” [607698/607698])
+
+进入zlib的目录
+[root@localhost src]# tar -zxvf zlib-1.2.11.tar.gz
+
+
 显示版本：
  
 安装SSL（OpenSSL）
@@ -39,20 +53,13 @@ tar -zxvf openssl-1.0.1t.tar.gz  解压压缩包
 
 设定Openssl 安装，( --prefix )参数为欲安装之目录，也就是安装后的档案会出现在该目录下：
 执行命令： ./config --prefix=/usr/local/src/openssl
- 
 
 执行命令./config -t
  
-
 执行make，编译Openssl
-
- 
 
 安装 Openssl:
 make install
-
- 
- 
 
 
 安装Nginx：
@@ -62,14 +69,13 @@ Tar -zxvf nginx-1.10.2.tar.gz
 进入目录：cd nginx-1.10.2
 命令：./configure
 
- 
-
 [root@localhost src]# yum install -y zlib-devel
- 
- 
 
 执行：make
+
 make install
+
+
 
 
 
