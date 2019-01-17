@@ -1,79 +1,79 @@
-安装wget
-[root@localhost ~]# yum -y install wget
- 
-安装make：
-[root@localhost ~]# yum -y install gcc automake libtool make
- 
+nginx: https://nginx.org/download/
+pcre: http://www.pcre.org/
+zlib: https://www.zlib.net/
+openssl: https://www.openssl.org/
 
-安装g++：
-[root@localhost ~]# yum install gcc gcc-c++
- 
-选定源码目录
- 
 
-安装PCRE库：
-[root@localhost src]# wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre-8.42.tar.gz
- 
-解压安装包：
-[root@localhost src]# tar -zxvf pcre-8.42.tar.gz 
+yum -y update   系统更新
 
-进入解压包目录：
-cd pcre-8。42
+yum -y install gcc automake autoconf libtool make    安装make
+
+yum -y install wget    安装wget
+
+yum install gcc gcc-c++            安装g++
+
+源码目录：/usr/local/src
+
+安装PCRE
+cd /usr/local/src
+wget ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/pcre2-10.21.tar.gz
+tar -zxvf pcre2-10.21.tar.gz
+cd pcre2-10.21
 ./configure
 make
 make install
 
-安装zlib：
-
-[root@localhost src]# wget http://zlib.net/zlib-1.2.11.tar.gz
---2018-11-08 10:34:26--  http://zlib.net/zlib-1.2.11.tar.gz
-正在解析主机 zlib.net (zlib.net)... 68.66.224.164
-正在连接 zlib.net (zlib.net)|68.66.224.164|:80... 已连接。
-已发出 HTTP 请求，正在等待回应... 200 OK
-长度：607698 (593K) [application/x-gzip]
-正在保存至: “zlib-1.2.11.tar.gz”
-
-100%[=================================================================>] 607,698      304KB/s 用时 2.0s   
-
-2018-11-08 10:34:29 (304 KB/s) - 已保存 “zlib-1.2.11.tar.gz” [607698/607698])
-
-进入zlib的目录
-[root@localhost src]# tar -zxvf zlib-1.2.11.tar.gz
-
-
-显示版本：
- 
-安装SSL（OpenSSL）
-参考链接：https://www.jb51.net/article/134400.htm
-cd /usr/local/src 进入目录
-wget https://www.openssl.org/source/openssl-1.0.1t.tar.gz 安在压缩包
-tar -zxvf openssl-1.0.1t.tar.gz  解压压缩包
-进入SSL目录：
-[root@localhost src]# cd openssl-1.0.1t 
-
-设定Openssl 安装，( --prefix )参数为欲安装之目录，也就是安装后的档案会出现在该目录下：
-执行命令： ./config --prefix=/usr/local/src/openssl
-
-执行命令./config -t
- 
-执行make，编译Openssl
-
-安装 Openssl:
+安装zlib库
+cd /usr/local/src
+wget  wget http://zlib.net/zlib-1.2.11.tar.gz
+tar -zxvf zlib-1.2.11.tar.gz
+cd zlib-1.2.11
+./configure
+make
 make install
 
-
-安装Nginx：
-Wget http://nginx.org/download/nginx-1.9.15.tar.gz   
-解压文件
-Tar -zxvf nginx-1.10.2.tar.gz
-进入目录：cd nginx-1.10.2
-命令：./configure
-
-[root@localhost src]# yum install -y zlib-devel
-
-执行：make
-
+安装openssl
+cd /usr/local/src
+wget https://www.openssl.org/source/openssl-1.1.1a.tar.gz
+tar -zxvf openssl-1.1.1a.tar.gz
+cd openssl-1.1.1a
+./configure
+make
 make install
+
+./config shared --prefix=/usr/local/src --openssldir=/usr/local/src/ssl
+
+
+
+安装nginx
+cd /usr/local/src
+wget https://nginx.org/download/nginx-1.13.12.tar.gz
+tar -zxvf nginx-1.13.12.tar.gz
+cd  nginx-1.13.12
+
+
+./configure --prefix=/usr/local/src/nginx-1.13.12
+
+
+
+make 
+make install	
+
+./sbin/nginx       nginx启动       cd/usr/local/nginx
+
+
+
+
+
+
+杀掉这个进程：
+[root@localhost ~]# killall -9 nginx
+
+
+再次启动nginx：
+[root@localhost ~]# /usr/local/nginx/sbin/nginx
+查看是否启动：
+[root@localhost ~]# ps aux|grep nginxs
 
 
 
