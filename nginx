@@ -57,7 +57,7 @@ cd  nginx-1.13.12
 
 
 make 
-make install	
+make install
 
 ./sbin/nginx       nginx启动       cd/usr/local/nginx
 
